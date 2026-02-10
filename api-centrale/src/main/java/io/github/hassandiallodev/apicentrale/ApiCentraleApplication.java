@@ -9,4 +9,4 @@ public class ApiCentraleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiCentraleApplication.class, args);
     }
-}   
+}

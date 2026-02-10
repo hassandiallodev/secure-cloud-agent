@@ -2,5 +2,16 @@
 
 # secure-cloud-agent
 
-Portfolio DevSecOps / Cloud Security (AWS) : Spring Boot (Java 17), CI/CD, scans sécurité, audit CloudTrail, audit CloudTrail, et un "sec-agent" qui ouvre des issues GitHub.
+Portfolio DevSecOps / Cloud Security (AWS) en Java 17 + Spring Boot.
 
+## Modules
+- **api-centrale** : API Spring Boot (endpoint `/hello`) + healthcheck Actuator (`/actuator/health`) + tests JUnit.
+- **sec-agent** : futur agent de sécurité (analyse, contrôles, intégration CI/CD).
+
+## Prérequis
+- Java 17
+- Maven (commande locale recommandée : `D:\sprojet\tools\mvn17`)
+
+## Lancer les tests
+```bash
+D:\sprojet\tools\mvn17 test
