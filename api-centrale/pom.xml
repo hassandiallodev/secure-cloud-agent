@@ -43,9 +43,23 @@
 
   <build>
     <plugins>
+      <!-- Plugin Spring Boot : permet mvn spring-boot:run et packaging -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <!-- Plugin de tests (Surefire) : stabilise l'exécution des tests en CLI/CI -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <!-- Évite des soucis de JVM forkée sur Windows -->
+          <forkCount>0</forkCount>
+
+          <!-- Autorise Mockito/ByteBuddy à s'auto-attacher sur JDK 17 -->
+          <argLine>-Djdk.attach.allowAttachSelf=true</argLine>
+        </configuration>
       </plugin>
     </plugins>
   </build>
