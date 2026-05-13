@@ -24,17 +24,12 @@ jobs:
       - name: Build (tests)
         run: mvn -q test
 
-      - name: OWASP Dependency-Check (scan)
-        uses: dependency-check/Dependency-Check_Action@main
-        with:
-          project: "secure-cloud-agent"
-          path: "."
-          format: "HTML"
-          args: >
-            --failOnCVSS 9
+      - name: OWASP Dependency-Check (scan via Maven)
+        run: mvn -q org.owasp:dependency-check-maven:check -DfailBuildOnCVSS=9
 
       - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dependency-check-report
-          path: "**/dependency-check-report.html"
+          path: "**/target/dependency-check-report.html"
